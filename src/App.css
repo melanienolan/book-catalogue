@@ -1,0 +1,148 @@
+:root {
+  font: 400 12px 'Roboto', sans-serif;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #009bcf;
+}
+.loading {
+  color: #ffffff;
+  font-size: 16px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  width: 600px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.logo--holder {
+  width: 50px;
+  height: 50px;
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(25deg);
+}
+.logo {
+  height: 50px;
+}
+.menu {
+  background-color: #009bcf;
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.menu--holder {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+.button {
+  border: none;
+  background-color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.button--tab {
+  background-color: #009bcf;
+  color: white;
+  width: 100px;
+  height: 40px;
+  font-weight: bold;
+}
+.button--tab-selected {
+  background-color: white;
+  color: #009bcf;
+}
+.button--add {
+  width: 90px;
+  height: 30px;
+  margin: 5px 0;
+}
+.content-menu {
+  background-color: #009bcf;
+  min-height: 50px;
+}
+.item--holder {
+  background-color: #009bcf;
+  max-height: 70vh;
+  overflow: scroll;
+  margin: 20px 0;
+}
+.item {
+  background-color: #f6f5f7;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 3px;
+  border-radius: 5px;
+}
+.item--details {
+  width: 100%;
+}
+.item--text {
+  font-size: 12px;
+  line-height: 15px;
+}
+.item--field {
+  display: inline-block;
+  width: 80px;
+}
+.item--buttons {
+  width: 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.button--item {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 14px;
+  background-color: #999999;
+  color: #ffffff;
+}
+.form {
+  width: 50%;
+  margin: 0 auto;
+  padding: 5px 10px;
+}
+.form--label {
+  color: #f6f5f7;
+  display: block;
+}
+.form--text {
+  display: inline-block;
+  width: 100px;
+}
+.form--input {
+  height: 20px;
+  width: 150px;
+  border-radius: 4px;
+  border: none;
+  margin: 2px 5px;
+  padding: 0 5px;
+}
+.form--buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.form--button {
+  width: 50px;
+  height: 24px;
+  border-radius: 4px;
+  margin: 2px;
+}
