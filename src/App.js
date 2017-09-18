@@ -66,7 +66,6 @@ class App extends Component {
       genreFormOpen: false
     });
   }
-
   genreChange(e) {
     e.preventDefault();
     this.setState(
@@ -80,12 +79,11 @@ class App extends Component {
     let { books, selectedGenre, genres } = this.state;
     // rearrange list of books in most recently added order
     books = books.sort((a, b) => b.id - a.id);
-    // check if selected genre exists in list of genres
-
+    // check if selected genre exists in list of genres, if not, default filter to all books
     const genreExists =
       genres.findIndex(genre => genre.name === selectedGenre) === -1 ? false : true;
     selectedGenre = genreExists ? selectedGenre : 'all';
-
+    // filter books to selected genre
     const filteredBooks =
       selectedGenre === 'all'
         ? books
@@ -109,13 +107,12 @@ class App extends Component {
       genreFormOpen
     });
   }
-
   deleteBook(id) {
     let { books } = this.state;
     let index = books.findIndex(book => book.id === id);
     const bookTitle = books[index].title;
+    // remove book from books array
     books = [...books.slice(0, index), ...books.slice(index + 1)];
-
     this.setState(
       {
         books
@@ -130,8 +127,9 @@ class App extends Component {
     let { genres, books } = this.state;
     let index = genres.findIndex(genre => genre.id === id);
     let genreName = genres[index].name;
+    // remove genre from genres array
     genres = [...genres.slice(0, index), ...genres.slice(index + 1)];
-    // remove books that have the genre being deleted
+    // remove books that contain the genre being deleted
     books = books.filter(book => {
       return book.genre !== genreName;
     });
@@ -157,6 +155,7 @@ class App extends Component {
   }
   saveBook() {
     let { books, bookForm, genres } = this.state;
+    // alert if any form fields are empty
     if (
       !bookForm.title.trim().length ||
       !bookForm.author.trim().length ||
@@ -199,7 +198,6 @@ class App extends Component {
       price: '',
       genre: ''
     };
-
     this.setState(
       {
         books,
@@ -213,8 +211,6 @@ class App extends Component {
     );
   }
   clearBookForm() {
-    console.log('clear');
-    // const bookForm = emptyBookform;
     const emptyBookForm = {
       id: null,
       title: '',
@@ -240,6 +236,7 @@ class App extends Component {
   }
   saveGenre() {
     let { genres, genreForm } = this.state;
+    // alert if field is empty
     if (!genreForm.name.trim().length) {
       alert('Please enter a genre name');
       return;
@@ -297,7 +294,6 @@ class App extends Component {
     // if genre is changed and doesn't exist in genre list, add new genre to list of genres
     let genreExists =
       genres.findIndex(genre => genre.name === bookToEdit.genre) === -1 ? false : true;
-
     if (!genreExists) {
       // clear genre form
       genreForm = { id: null, name: '' };
@@ -308,6 +304,7 @@ class App extends Component {
         id,
         name: bookToEdit.genre
       };
+      // append new genre to genres array
       genres.push(genreForm);
       const emptyGenreForm = {
         id: null,
@@ -336,9 +333,7 @@ class App extends Component {
     const name = e.target.name;
     const value = e.target.value;
     let { bookToEdit } = this.state;
-
     bookToEdit[name] = value;
-
     this.setState({
       bookToEdit
     });
@@ -367,14 +362,14 @@ class App extends Component {
     genreToEdit = Object.assign({}, genreToEdit);
     let index = genres.findIndex(genre => genre.id === genreToEdit.id);
     const originalGenre = genres[index].name;
-    //update books containing original genre
+    // update books containing original genre to now include edited genre
     books = books.map(book => {
       if (book.genre === genres[index].name) {
         book.genre = genreToEdit.name;
       }
       return book;
     });
-
+    // update genres array with edited genre
     genres = [...genres.slice(0, index), genreToEdit, ...genres.slice(index + 1)];
 
     this.setState(
